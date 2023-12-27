@@ -16,7 +16,7 @@ import javax.servlet.http.HttpSession;
 public class LoginServlet extends HttpServlet{
    @Override
    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      // JSP에서는 자동으로 만들어져 이ㅏㅆ는 객체들 (JSP 내장객체)
+      // JSP에서는 자동으로 만들어져 있는 객체들 (JSP 내장객체)
       ServletContext application = req.getServletContext();
       HttpSession session = req.getSession();
       
