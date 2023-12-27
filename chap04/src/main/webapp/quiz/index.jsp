@@ -10,6 +10,7 @@
 
 	<h3># 요구사항</h3>
 	
+	
 	<ul>
 		<li>아이디와 비밀번호를 입력하고 로그인 버튼을 눌러 로그인을 할 수 있다</li>
 		<li>회원가입은 아이디와 비밀번호만 입력하면 완료된다 (아이디 중복은 체크해야한다, 가입된 정보는 application 영역에 등록한다)</li>
@@ -20,15 +21,36 @@
 			(서블릿을 사용하고 싶다면 URL을 quiz로 맞출 것)</li>
 	</ul>
 	
+	<button onclick="location.href='/chap04/quiz/loginForm.jsp';">로그인 하러가기</button>
 	
+	<button onclick="location.href='/chap04/quiz/registerForm.jsp';">회원가입</button>
 	
-	<form action="LoginServlet" method="POST">
-		아이디 : <input id="userId" type="text" name="userId" /> <br />
-		비밀번호 : <input id="password" type="password" name="password" /> <br />
-		<input type="submit" value="로그인" />
-	</form>
-	<br />
-	<a href="register.jsp">회원가입</a>
+	<h3># 모든 어플리케이션 어트리뷰트 찍어보기</h3>
+	<ul>
+	<%
+		// scope.getAttributeNames() : 해당 영역의 모든 어트리뷰트 이름들을 꺼낼 수 있는 객체를 반환
+		java.util.Enumeration<String> names = application.getAttributeNames();
+	
+		// hasMoreElements 다음 거 있으면 꺼내라
+		while (names.hasMoreElements()) {
+			String name = names.nextElement();
+			
+			out.print(String.format("<li>%s=%s</li>", name, application.getAttribute(name)));
+		}
+	%>
+	</ul>
+	
+	<script>
+		<% 
+			if (request.getParameter("error") != null) { 
+				if (request.getParameter("dup") != null) {
+					out.print("alert('이미 사용중인 아이디입니다!')");
+				} else {
+					out.print("alert('회원가입 실패!')");
+				}
+			} 
+		%>
+	</script>
 
 </body>
 </html>
