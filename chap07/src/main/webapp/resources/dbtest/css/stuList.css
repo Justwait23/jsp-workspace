@@ -1,0 +1,11 @@
+.stu-list {
+	display: grid;
+	grid-template-columns: repeat(6, 1fr);
+	gap: 3px;
+}
+
+.stu-list > div {
+	border: solid 1px black;
+	border-radius: 5px;
+	text-align: center;
+}
