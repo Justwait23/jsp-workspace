@@ -48,9 +48,43 @@ public class BreadDao {
 			e.printStackTrace();
 			return null;
 		}
-		
-		
 	}
+	
+	public Integer delete(BreadDTO breadDto) {
+		String sql = "DELETE FROM bread WHERE bread_name = ?";
+		
+		try (
+				Connection conn = DBConnector.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+			){
+				pstmt.setString(1, breadDto.getBread_name());
+				
+				return pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
+	public Integer update(BreadDTO breadDto) {
+		String sql = "UPDATE bread SET bread_price = ? WHERE bread_name = ?";
+		
+		try (
+				Connection conn = DBConnector.getConnection();
+				PreparedStatement pstmt = conn.prepareStatement(sql);
+			){
+				pstmt.setInt(1, breadDto.getBread_price());
+				pstmt.setString(2, breadDto.getBread_name());
+				
+				return pstmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+	}
+	
 	
 }
 

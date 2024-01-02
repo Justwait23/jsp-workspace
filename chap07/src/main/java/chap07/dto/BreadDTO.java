@@ -8,8 +8,12 @@ public class BreadDTO {
 		
 	}
 	
+	public BreadDTO(String bread_name) {
+		this.bread_name = bread_name;
+	}
+	
+	
 	public BreadDTO(String bread_name, Integer bread_price) {
-		super();
 		this.bread_name = bread_name;
 		this.bread_price = bread_price;
 	}
