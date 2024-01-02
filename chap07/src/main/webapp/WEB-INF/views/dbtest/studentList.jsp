@@ -28,17 +28,27 @@
 	</div>
 	
 	<div>
-		<form action="<%=request.getContextPath() %>" method="POST">
-		<label for="name">이름:</label>
-		<input type="text" id="name" name="name" /> <br />
-		<label for="major">학과:</label>
-		<input type="text" id="major" name="major" /> <br />
-		<label for="admission">입학년도:</label>
-		<input type="text" id="admission" name="admission" /> <br />
-		<label for="phone_number">전화번호:</label>
-		<input type="text" id="phone_number" name="phone_number"/> <br />
-		<button type="submit">추가</button>
+		<form action="<%=request.getContextPath() %>/dbtest/studentList/add" method="POST">
+	    <label for="name">이름:</label>
+	    <input type="text" id="name" name="name" /> <br />
+	    <label for="major">학과:</label>
+	    <input type="text" id="major" name="major" /> <br />
+	    <label for="admission">입학년도:</label>
+	    <input type="number" id="admission" name="admission" /> <br />
+	    <label for="phone_number">전화번호:</label>
+	    <input type="number" id="phone_number" name="phone_number"/> <br />
+	    <label for="email">이메일:</label>
+	    <input type="text" id="email" name="email"/> <br>
+    	<button type="submit">추가</button>
 		</form>
+	</div>
+	
+	<div>
+    	<form action="<%=request.getContextPath() %>/dbtest/studentList/delete" method="POST">
+        <label for="studentIdToDelete">삭제할 학생의 ID:</label>
+        <input type="text" id="studentIdToDelete" name="studentIdToDelete" /> <br>
+        <button type="submit">삭제</button>
+    	</form>
 	</div>
 
 </body>
