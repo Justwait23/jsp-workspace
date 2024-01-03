@@ -18,6 +18,7 @@ public class EmployeesListWebProcess implements WebProcess {
 	
 	@Override
 	public String process(HttpServletRequest request) {
+		
 		try (
 			Connection conn = DBConnector.getConnection();
 			PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM employees");
@@ -37,8 +38,7 @@ public class EmployeesListWebProcess implements WebProcess {
 							rs.getDate("hire_date"),
 							rs.getString("job_id"),
 							rs.getInt("manager_id"),
-							rs.getInt("department_id"),
-							rs.getString("department_name")
+							rs.getInt("department_id")
 						));
 			}
 			

@@ -17,7 +17,7 @@ public class EmployeesDTO {
 	private String department_name;
 	
 	public EmployeesDTO(Integer employee_id, String first_name, String last_name, Double salary, Double commission_pct,
-			Date hire_date, String job_id, Integer manager_id, Integer department_id, String department_name) {
+			Date hire_date, String job_id, Integer manager_id, Integer department_id) {
 		
 		this.employee_id = employee_id;
 		this.first_name = first_name;
@@ -28,17 +28,16 @@ public class EmployeesDTO {
 		this.job_id = job_id;
 		this.manager_id = manager_id;
 		this.department_id = department_id;
-		this.department_name = department_name;
+		
 	}
 	
 	public EmployeesDTO() {
 	
 	}
 	
-	public EmployeesDTO(String first_name, String last_name, String department_name) {
+	public EmployeesDTO(String first_name, String last_name) {
 		this.first_name = first_name;
 		this.last_name = last_name;
-		this.department_name = department_name;
 	}
 	
 	
@@ -54,6 +53,7 @@ public class EmployeesDTO {
 				+ "<div>%d</div>"
 				+ "<div>%d</div>", employee_id, first_name, last_name, salary, commission_pct, hire_date, job_id, manager_id, department_id);
 	}
+
 
 	public Integer getEmployee_id() {
 		return employee_id;
@@ -134,7 +134,16 @@ public class EmployeesDTO {
 	public void setDepartment_name(String department_name) {
 		this.department_name = department_name;
 	}
+
+	public void setDepartment(DepartmentDTO department) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
 	
+
 	
 	
 	

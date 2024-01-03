@@ -6,7 +6,7 @@ public class EmployeesSearchFormWebProcess implements WebProcess {
 
 	@Override
 	public String process(HttpServletRequest request) {
-		return "./searchForm.jsp";
+		return "/WEB-INF/employees/searchForm.jsp";
 	}
 
 }
