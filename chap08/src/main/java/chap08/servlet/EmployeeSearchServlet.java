@@ -23,24 +23,23 @@ import chap08.dto.EmployeesDTO;
 public class EmployeeSearchServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+    protected void service(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
 
-        String firstName = request.getParameter("firstName");
-        String lastName = request.getParameter("lastName");
-        String departmentName = request.getParameter("departmentName");
+        String firstName = req.getParameter("firstName");
+        String lastName = req.getParameter("lastName");
+        String departmentName = req.getParameter("departmentName");
 
         List<EmployeesDTO> searchResults = performSearch(firstName, lastName, departmentName);
 
-        request.setAttribute("searchResults", searchResults);
+        req.setAttribute("searchResults", searchResults);
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("employeeSearchResult.jsp");
-        dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("employeeSearchResult.jsp");
+        dispatcher.forward(req, resp);
     }
 
     private List<EmployeesDTO> performSearch(String firstName, String lastName, String departmentName) {
-        List<EmployeesDTO> results = new ArrayList<>();
+        	List<EmployeesDTO> results = new ArrayList<>();
         
 
         try {

@@ -11,7 +11,8 @@
 <body>
 
 	<h3># 사원 검색하기</h3>
-
+	
+	<div>
     <form action="employeeSearch" method="post">
         <label for="firstName">이름:</label>
         <input type="text" id="firstName" name="firstName">
@@ -24,7 +25,7 @@
 
         <input type="submit" value="검색">
     </form>
-    
+    </div>
 
     <h3># 검색 결과</h3>
 
@@ -44,7 +45,7 @@
 
     <c:forEach var="employee" items="${searchResults}">
         <div class="emp-list">
-            <div>${employee.employee_id}</div> <!-- 추가된 부분 -->
+            <div>${employee.employee_id}</div>
             <div>${employee.first_name}</div>
             <div>${employee.last_name}</div>
             <div>${employee.salary}</div>
