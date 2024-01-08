@@ -21,7 +21,9 @@ public class ApplicationServlet extends HttpServlet {
 	public void init() throws ServletException {
 		uriMapping.put("GET:/", BoardListService.getInstance());
 		uriMapping.put("GET:/list", BoardListService.getInstance());
-		uriMapping.put("GET:/write", new BoardWriteFormService());
+		uriMapping.put("GET:/write", BoardWriteFormService.getInstance()); // 싱글톤 귀찮 내가 수정해보기
+		uriMapping.put("POST:/write", BoardWriteService.getInstance()); // 싱글톤 귀찮
+		uriMapping.put("GET:/detail", BoardDetailService.getInstance());
 	}
 	
 	@Override
@@ -30,13 +32,12 @@ public class ApplicationServlet extends HttpServlet {
 		
 		String cmd = req.getMethod() + ":" + req.getRequestURI().substring(req.getContextPath().length());
 	
-		String nextView = uriMapping.get(cmd).service(req);
+		String nextView = uriMapping.get(cmd).service(req, resp);
 		
 		if (nextView.startsWith(REDIRECT_PREFIX)) {
-			resp.sendRedirect(nextView.substring(REDIRECT_PREFIX_LEN));
+			resp.sendRedirect(req.getContextPath() + nextView.substring(REDIRECT_PREFIX_LEN));
 		} else {
 			req.getRequestDispatcher(nextView).forward(req, resp);
-			
 		}
 	}
 }

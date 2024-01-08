@@ -2,6 +2,8 @@ package board.dto;
 
 import java.util.Date;
 
+import board.secure.SecureTools;
+
 public class BoardDTO {
 	
 	private Integer board_id; // PK
@@ -13,17 +15,6 @@ public class BoardDTO {
 	private Date write_date;
 	
 	public BoardDTO() {}
-
-	public BoardDTO(Integer board_id, String board_title, String board_content, String board_password,
-			String board_writer, Integer view_count, Date write_date) {
-		this.board_id = board_id;
-		this.board_title = board_title;
-		this.board_content = board_content;
-		this.board_password = board_password;
-		this.board_writer = board_writer;
-		this.view_count = view_count;
-		this.write_date = write_date;
-	}
 
 	public Integer getBoard_id() {
 		return board_id;
@@ -79,6 +70,13 @@ public class BoardDTO {
 
 	public void setWrite_date(Date write_date) {
 		this.write_date = write_date;
+	}
+
+	@Override
+	public String toString() {
+		return "BoardDTO [board_id=" + board_id + ", board_title=" + board_title + ", board_content=" + board_content
+				+ ", board_password=" + board_password + ", board_writer=" + board_writer + ", view_count=" + view_count
+				+ ", write_date=" + write_date + "]";
 	}
 	
 	

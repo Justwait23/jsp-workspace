@@ -1,6 +1,12 @@
 package board.service;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import board.dao.BoardDAO;
+import board.dto.BoardDTO;
 
 public class BoardListService implements Service {
 	
@@ -13,9 +19,16 @@ public class BoardListService implements Service {
 	
 	private BoardListService() {}
 
+	BoardDAO dao = new BoardDAO();
+	
 	@Override
-	public String service(HttpServletRequest request) {
-		return "WEB-INF/views/board/index.jsp";
+	public String service(HttpServletRequest request, HttpServletResponse response) {
+		
+		List<BoardDTO> boards = dao.getList();
+
+		request.setAttribute("boards", boards);
+		
+		return "/WEB-INF/views/board/index.jsp";
 	}
 
 }
