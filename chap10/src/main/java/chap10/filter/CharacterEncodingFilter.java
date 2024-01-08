@@ -28,9 +28,7 @@ public class CharacterEncodingFilter implements Filter {
 		System.out.println("요청을 " + charset + "으로 해석하도록 설정했습니다.");
 		
 		chain.doFilter(request, response);
-		
-		
-		
+
 	}
 
 }
