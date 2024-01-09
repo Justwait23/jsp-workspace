@@ -25,10 +25,11 @@ public class BoardWriteService implements Service {
 		
 		String board_title = request.getParameter("board_title");
 		String board_content = request.getParameter("board_content");
-		String board_writer = request.getParameter("board_content");
+		String board_writer = request.getParameter("board_writer");
 		String board_password = request.getParameter("board_password");
 		
 		// 필요하다면 입력값에 대한 검사를 진행한다 (비속어,null, ...귀찮)
+		System.out.println(board_title);
 		
 		BoardDTO dto = new BoardDTO();
 		

@@ -21,9 +21,14 @@ public class ApplicationServlet extends HttpServlet {
 	public void init() throws ServletException {
 		uriMapping.put("GET:/", BoardListService.getInstance());
 		uriMapping.put("GET:/list", BoardListService.getInstance());
-		uriMapping.put("GET:/write", BoardWriteFormService.getInstance()); // 싱글톤 귀찮 내가 수정해보기
-		uriMapping.put("POST:/write", BoardWriteService.getInstance()); // 싱글톤 귀찮
+		uriMapping.put("GET:/write", BoardWriteFormService.getInstance());
+		uriMapping.put("POST:/write", BoardWriteService.getInstance());
 		uriMapping.put("GET:/detail", BoardDetailService.getInstance());
+		uriMapping.put("GET:/modify", BoardModifyFormService.getInstance());
+		uriMapping.put("POST:/modify", new BoardModifyService());
+		uriMapping.put("POST:/delete", new BoardDeleteService());
+		uriMapping.put("GET:/delete/open", new DeletePopupService());
+
 	}
 	
 	@Override
