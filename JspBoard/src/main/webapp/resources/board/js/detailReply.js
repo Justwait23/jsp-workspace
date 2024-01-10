@@ -5,7 +5,7 @@ const replyWriter = document.querySelector('#replyWriter');
 const replyPassword = document.querySelector('#replyPassword');
 
 replyContent.addEventListener('keydown', (e) => {
-	console.log(e);
+	// console.log(e);
 	
 	if (e.keyCode === 13) {
 		// shift 안누르고 Enter하면 submit()

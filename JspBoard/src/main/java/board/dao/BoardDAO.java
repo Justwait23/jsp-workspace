@@ -16,8 +16,8 @@ public class BoardDAO {
 				+ "VALUES(myboard_id_seq.nextVal,?,?,?,?)";
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 		){
 			pstmt.setString(1, dto.getBoard_title());
 			pstmt.setString(2, dto.getBoard_content());
@@ -26,7 +26,7 @@ public class BoardDAO {
 			
 			return pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
@@ -38,8 +38,8 @@ public class BoardDAO {
 		List<BoardDTO> list = new ArrayList<>();
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 			ResultSet rs = pstmt.executeQuery();
 		){
 			while (rs.next()) {
@@ -52,7 +52,7 @@ public class BoardDAO {
 				list.add(dto);
 			}
 			return list;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -64,8 +64,8 @@ public class BoardDAO {
 		BoardDTO detail = new BoardDTO();
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 		){
 			pstmt.setInt(1, pk);
 			
@@ -80,7 +80,7 @@ public class BoardDAO {
 				detail.setBoard_password(rs.getString("board_password"));
 			}
 			return detail;
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
@@ -91,14 +91,14 @@ public class BoardDAO {
 		String sql = "UPDATE myboard SET view_count=view_count+1 WHERE board_id=?";
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 		){
 			pstmt.setInt(1, pk);
 			
 			return pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
@@ -109,15 +109,15 @@ public class BoardDAO {
 		
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 		){
 			pstmt.setString(1, dto.getBoard_title());
 			pstmt.setString(2, dto.getBoard_content());;
 			pstmt.setInt(3, dto.getBoard_id());
 			
 			return pstmt.executeUpdate();
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}
@@ -127,14 +127,14 @@ public class BoardDAO {
 		String sql = "DELETE FROM myboard WHERE board_id=?";
 		
 		try (
-			Connection conn = DBConnector.getConnection();
-			PreparedStatement pstmt = conn.prepareStatement(sql);
+			DBSession session = DBConnector.getSession();
+			PreparedStatement pstmt = session.prepareStatement(sql);
 		){
 			pstmt.setInt(1, pk);
 			
 			return pstmt.executeUpdate();
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
 		}

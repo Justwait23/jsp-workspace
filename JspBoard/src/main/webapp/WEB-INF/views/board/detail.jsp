@@ -11,6 +11,8 @@
 
 	<h3>조회 잘 됨</h3>
 	
+	<button id="listBtn">목록으로</button> <br />
+	
 	제목 : <input type="text" value="${detail.board_title}" readonly/> <br>
 	작성자 : <input type="text" value="${detail.board_writer}" readonly/> <br />
 	조회수 : ${detail.view_count} 작성일 : ${detail.write_date}<br />
@@ -26,6 +28,18 @@
 		<input type="hidden" name="check_password" value="${detail.board_password}"/>
 		<input type="hidden" name="board_password" id="hiddenPassword"/> <!-- 전달용 -->
 	</form>
+	
+	<hr />
+	
+	<c:forEach items="${replies}" var="reply">
+		<div>
+			[${reply.reply_writer}]
+			${reply.reply_content}
+			<span>${reply.reply_date}</span>		
+		</div>
+	</c:forEach>
+
+	<hr />
 	
 	
 	<div id=replyWriteDiv>
